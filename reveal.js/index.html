@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+            <div class="slides">
+                <section class="stack" data-id="76910475b7d774e8f1dffd7833b339bb">
+                    <section class="" data-id="026bf84e9dd391c4052a9dddd1e433d2">
+                        <h1>AngularJS</h1>
+                        <p>GETTING STARTED</p>
+                    </section>
+                    <section class="" data-id="ffeeff535ceee9ba9c04ee9d73ec93b2">
+                        <h2>Getting Started&nbsp;</h2>
+                        <div>Simple Page</div>
+                        <div>
+                <pre>
+<code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+HI I'm a web page
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                        </div>
+                        <br/>
+                        <iframe src="../examples/sample_00.html" style="background-color:  white; width: 602px; height: 353.844528939586px; max-height: none; max-width: none;" class="fragment" data-fragment-index="0"></iframe>
+                    </section>
+
+
+<section class="" data-id="3b40cb908eb9cdb25da7b7abd663a5d1">
+<h2>Load Angular</h2>
+<div>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html
+<b>ng-app="app"</b>&gt;
+&lt;head&gt;
+&lt;script type="text/javascript" src="angular.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+HI I'm a web page
+&lt;/body&gt;
+&lt;script type="text/javascript"&gt;
+var app = angular.module("app", []);
+&lt;/script&gt;
+&lt;/html&gt;
+
+</code></pre>
+</div>
+<br/>
+<iframe src="../examples/sample_00.html" style="width: 602px; height: 192.437262357414px; max-height: none; max-width: none;" class="fragment" data-fragment-index="0"></iframe>
+</section>
+</section>
+                <section class="stack" data-id="aa2512104cdd3d4e0f88f902a16e4bcb">
+                    <section class="" data-id="5a23c08dbd48332da44247e0c18e1a38">
+                        <h2>Basic Concepts</h2>
+                        <div>
+                            <b>Model</b> : Some JSON&nbsp;
+                        </div>
+                        <div>
+                            <b>View</b> : Angular Template &amp; Directives
+
+                        </div>
+
+                        <div>
+                            <b>Controller</b> : JS code&nbsp;
+                        </div>
+                    </section>
+
+                    <section class="" data-id="922f106f2d3932f79492074b737b437f">
+                        <h2>Angular Models</h2>
+                        <div>Are just plain old JS objects (POJSO? :) )&nbsp;</div>
+                        <div>(Fields, Lists, Primitives, other Objects) &nbsp;</div>
+                        <div>
+                <pre>
+<code>// Simple values
+"some value"
+
+// Lists of stuff
+["a","list", "of ", "stuff"]
+
+// complex objects
+{
+    "name" : "Transactions By Currency",
+    "output" : [{"field" : "txn_count", "agg": "SUM"},
+                {"field" : "txn_curr_code", "agg": "NONE"}]
+}
+</code></pre>
+
+                        <br/>
+</div></section>
+                    <section class="" data-id="f0fe31b8a6d5ca42d9301476bc2fba9f">
+                        <h2>Angular Views</h2>
+                        <div>Are HTML templates,</div>
+                        <div>&nbsp;they use {{handleBars}} style bindings</div>
+                        <div>
+                <pre><code>
+&lt;div&gt;
+&lt;div&gt; Hello I am : &lt;b&gt;
+<b>{{greeting}}</b>&lt;/b&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+                </code></pre>
+                        </div>
+                        <br/>These are dynamically compiled by angular in the browser
+                    </section>
+                    <section class="" data-id="2b80d7f67393bfda796b3ad2b64d7207">
+                        <h2>Angular Controllers</h2>
+                        <p>Are Functions which bind your
+                            <b>model</b> to your
+                            <b>view</b>
+                        </p>
+                        <p>Via a &nbsp;view model ($scope)&nbsp;</p>
+                        <div>
+                <pre><code>&lt;div ng-controller="SimpleController"&gt;
+&lt;div&gt; Hello I am : &lt;b&gt;{{greeting}}&lt;/b&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;script type="text/javascript"&gt;
+// Define the app  and it's dependencies
+var app = angular.module("app", []);
+// Register a controller
+app.controller("SimpleController", function ($scope) {
+                    $scope.greeting =
+                      ["A Little Teapot", "Spartacus",
+                       "An Angular Web App"]
+                              [Math.floor(Math.random() * 3)];
+});
+&lt;/script&gt;
+</code></pre>
+                        </div>
+                        <br/>
+                    </section>
+                    <section class="" data-id="ec3916429e84cadfa37b499ab3e57841">
+                        <h2>Controller E.G</h2>
+                        <iframe src="../examples/sample_01.html" style="width: 602px; height: 353.844528939586px; max-height: none; max-width: none;" class="fragment" data-fragment-index="0"></iframe>
+                    </section>
+                    <section class="" data-id="fc03f11416fe3cae0e2bcf8364c7f096">
+                        <h2>2-Way Binding</h2>
+                        <div>Binding can go from the model to view {{model.value}}</div>
+                        <div>Or from the view to the model:&nbsp;</div>
+                        <div>
+<pre><code>&lt;div ng-controller="SimpleController"&gt;
+&lt;div&gt; Hello I am : &lt;b&gt;{{greeting}}&lt;/b&gt;&lt;/div&gt;
+&lt;div&gt; Input: &lt;input ng-model="greeting"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;script type="text/javascript"&gt;
+    var app = angular.module("app", []);
+    app.controller("SimpleController", function ($scope) {
+        $scope.greeting = "an empty page";
+    });
+&lt;/script&gt;
+                </code></pre>
+                        </div>
+                        Input Binding is triggered by inputs from bound elements
+                        <br/>
+                        <div>Angular figures out what to do each time</div>
+                    </section>
+                    <section class="" data-id="dabe241498111ceee7a8ce9272c65248">
+                        <h2>2 Way Binding EG</h2>
+                        <div class="fragment" data-fragment-index="0">
+                            <br/>
+                            <iframe src="../examples/sample_02.html" style="width: 602px; height: 353.844528939586px; max-height: none; max-width: none;"></iframe>
+                        </div>
+                    </section>
+                    <section class="" data-id="543f78a56f1580617ff64ea86d58882e">
+                        <h2>Binding: External Changes</h2>
+                        <p>Angular picks up changes on bound inputs, otherwise you have to
+                            <b>
+                                <i>$apply</i>
+                            </b> the &nbsp;
+                            <b>
+                                <i>$scope</i>
+                            </b>
+                        </p>
+<pre><code>&lt;div ng-controller="SimpleController"&gt;
+&lt;div&gt; The Time is  : &lt;b&gt;{{currentTime}}&lt;/b&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;script type="text/javascript"&gt;
+var app = angular.module("app", []);
+
+app.controller("SimpleController", function ($scope) {
+$scope.currentTime = new Date();
+
+setInterval(function(){
+$scope.currentTime = new Date();</code></pre>
+            <pre class="fragment" data-fragment-index="0"><code>       $scope.$apply();</code></pre>
+    <div>
+<pre><code>           },1000);
+});
+&lt;/script&gt;</code></pre>
+                        </div>
+                        <br/>
+                    </section>
+                    <section class="" data-id="fb49b41435e275e92542b1ffd0212d99">
+                        <h2>Apply EG</h2>
+                        <div>
+                            <br/>
+                            <iframe src="../examples/sample_03.html" style="width: 602px; height: 353.844528939586px; max-height: none; max-width: none; background-color:  white"></iframe>
+                        </div>
+                    </section>
+                </section>
+                <section class="" data-id="249d5ccce5e955b9bf1c2a4134edf39f">
+                    <h2>Title</h2>
+                </section>
+                <section class="" data-id="509f82c54fae5b46dd9df4721060af1c">
+                    <h2>Dependency Injection&nbsp;</h2>
+                    <div>
+                        <br/>
+                    </div>
+                </section>
+            </div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
