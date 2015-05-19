@@ -21,7 +21,7 @@ function execute(command, callback){
     exec(command, function(error, stdout, stderr){ callback(stdout); });
 };
 
-app.get("/testData", function (req, resp) {
+app.get("/testData.json", function (req, resp) {
     execute("uptime",function(uptime){
         resp.json({
             serverUptime: uptime
