@@ -15,7 +15,7 @@
     app.factory("UptimeService", function ($http) {
         return {
             getUpTime: function () {
-                return $http.get("/testData.json")
+                return $http.get("testData.json")
 		 .catch(function (e) {
                     console.log("an http error occured", e);
                     throw e;
