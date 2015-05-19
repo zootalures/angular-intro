@@ -9,7 +9,7 @@ app.engine('handlebars', exphbs({}));
 app.set('view engine', 'handlebars');
 
 app.use("/examples", express.static(__dirname +"/examples/"));
-app.use("/presentation",express.static(__dirname +"/reveal.js/"));
+app.use("/presentation",express.static(__dirname +"/presentation/"));
 
 app.get("/", function (req, resp) {
     resp.redirect("/presentation/");
