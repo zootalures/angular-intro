@@ -112,6 +112,6 @@ based on dark.css by Ivan Sagalaev
 .xml .vbscript,
 .xml .css,
 .xml .hljs-cdata {
-  opacity: 0.5;
+  opacity: 1;
 }
 
