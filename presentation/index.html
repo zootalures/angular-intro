@@ -138,8 +138,7 @@ var app = angular.module("app", []);
                 <div>
                 <pre><code>
 &lt;div&gt;
-&lt;div&gt; Hello I am : &lt;b&gt;
-<b>{{greeting}}</b>&lt;/b&gt;&lt;/div&gt;
+&lt;div&gt; Hello I am : &lt;b&gt;{{greeting}}&lt;/b&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/body&gt;
                 </code></pre>
@@ -149,7 +148,7 @@ var app = angular.module("app", []);
             <section class="">
                 <h2>Angular Controllers</h2>
 
-                <p>Are Functions which bind your
+                <p>Are objects/functions which bind your
                     <b>model</b> to your
                     <b>view</b>
                 </p>
@@ -344,18 +343,20 @@ $scope.currentTime = new Date();</code></pre>
 
                 <p> Pass the dependency reference as a named parameter to the object definition</p>
                 <pre class="fragment" data-fragment-index="0"><code>app.controller(&quot;SimpleController&quot;, function ($http,$scope) {</code></pre>
-                <pre class="fragment" data-fragment-index="1"><code>$http.get(&quot;/testData&quot;).then(function (resp) {
-          console.log(&quot;got data of type &quot;,resp,typeof (resp));
+                <pre class="fragment" data-fragment-index="1"><code>$http.get(&quot;/testData&quot;)
+      .then(function (resp) {
+          console.log(&quot;got HTTP Response &quot;,resp);
           $scope.remoteContent = resp.data.serverUptime;
           $scope.$apply();
-      }).catch(function(e){
+      })
+      .catch(function(e){
           console.log(&quot;an errror occured&quot;,e);
       });
     });</code></pre>
                 <pre class="fragment" data-fragment-index="2"><code>app.controller(&quot;SimpleController&quot;,
                   [&quot;$http&quot;,&quot;$scope&quot;, function ($http,$scope) {</code></pre>
 
-                <a href="/testData" target="_blank">service</a>
+                <a href="../examples/testData.json" target="_blank">service</a>
             </section>
             <section class="">
                 <iframe src="../examples/sample_07.html" style="width: 602px; height: 200px; max-height: none; max-width: none; background-color:  white"></iframe>
@@ -409,7 +410,7 @@ $scope.currentTime = new Date();</code></pre>
 
                     <p class="fragment" data-fragment-index="2">E.g. a widget</p>
 
-                    <p class="fragment" data-fragment-index="3"><em>Massively</em> over-used in the MM</p>
+                    <p class="fragment" data-fragment-index="3"><em>Massively</em> over-used in the some projects <i class="fa fa-smile-o"/> </p>
                 </div>
             </section>
             <section>
@@ -428,15 +429,12 @@ app.controller(&quot;SimpleController&quot;, function ( $scope) {
 
                 <pre class="fragment" data-fragment-index="1"><code>&lt;div owens-directive/&gt;</code></pre>
                 <iframe class="fragment" data-fragment-index="2" src="../examples/sample_09.html" style="width: 602px; height: 200px; max-height: none; max-width: none; background-color:  white"></iframe>
-
-
             </section>
         </section>
 
         <section class="stack">
             <section class="">
                 <h2>Modules and scaling up </h2>
-
                 <p>
                     Angular projects can use third party modules:
                 </p>
